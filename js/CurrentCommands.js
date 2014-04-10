@@ -51,22 +51,35 @@ $(document).ready(function(){
 
    });
 
-
-
-
-
-
-
-
-
-
-
     //Next set is intended to submit a tweet using the username and picture currently uploaded
 
-//    $("tweet-submit").on("click",function() {
-//       var tweetText = $(".tweet-compose").val();
+    $("#tweet-submit").on("click",function() {
+        var tweetText = $(".tweet-compose").val();
+        var newTweet = $("#stream .tweet").first().clone();
+            $(newTweet).find("p").first().text(tweetText);
+            $(newTweet).find(".avatar").attr("src", "img/babysloath.jpg");
+            $(newTweet).find(".fullname").text("Baby Sloath");
+            $(newTweet).find(".username").text("@BabySloath");
+            $("#stream").prepend(newTweet);
+            $(newtweet).find(".reply").hide();
+            $(newTweet).find(".stats").hide();
+
+    });
+
+    $(document).on("click",".tweet",function() {
+
+        $('.tweet').find(".reply, .stats").slideDown();
+
+    });
+
+//    $(document).blur(".tweet",function() {
+//
+//        $('.tweet').find(".reply, .stats").slideUp();
 //
 //    });
 
-
+//    $(document).on("click",".tweet",function() {
+//
+//        $('.tweet').find(".reply, .stats").slideUp();
+//    });
 });
